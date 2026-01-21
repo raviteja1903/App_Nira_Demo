@@ -37,7 +37,7 @@ const tabs = [
     key: "account",
     label: "Account",
     icon: "person-outline",
-    route: "/(tabs)/account",
+    route: "/(tabs)/profileaccount",
   },
 ];
 
