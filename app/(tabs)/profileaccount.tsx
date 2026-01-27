@@ -1,5 +1,6 @@
 import BottomNav from "@/components/home/BottomNav";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -7,68 +8,80 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function ProfileScreen() {
   return (
     <>
-    <SafeAreaView style={styles.safe}>
-      {/* HEADER */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>My Profile</Text>
-      </View>
-
-      {/* AVATAR */}
-      <View style={styles.avatarContainer}>
-        <Image
-          source={{
-            uri: "https://static.vecteezy.com/system/resources/previews/036/475/917/original/agent-or-spy-icon-incognito-logo-vector.jpg",
-          }}
-          style={styles.avatar}
-        />
-        <Text style={styles.name}>John Doe</Text>
-        <Text style={styles.email}>johndoe@example.com</Text>
-      </View>
-
-      {/* BTC BALANCE BOX */}
-      <View style={styles.balanceBox}>
-        <Ionicons name="logo-bitcoin" size={30} color="#F7931A" />
-        <View style={{ marginLeft: 10 }}>
-          <Text style={styles.balanceLabel}>BTC Rewards</Text>
-          <Text style={styles.balanceValue}>0.00568 BTC</Text>
+      <SafeAreaView style={styles.safe}>
+        {/* HEADER */}
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>My Profile</Text>
         </View>
-      </View>
 
-      {/* EDIT PROFILE BUTTON */}
-      <TouchableOpacity style={styles.editBtn}>
-        <Text style={styles.editText}>Edit Profile</Text>
-      </TouchableOpacity>
+        {/* AVATAR */}
+        <View style={styles.avatarContainer}>
+          <Image
+            source={{
+              uri: "https://static.vecteezy.com/system/resources/previews/036/475/917/original/agent-or-spy-icon-incognito-logo-vector.jpg",
+            }}
+            style={styles.avatar}
+          />
+          <Text style={styles.name}>John Doe</Text>
+          <Text style={styles.email}>johndoe@example.com</Text>
+        </View>
 
-      {/* OPTIONS LIST */}
-      <View style={styles.options}>
-        <TouchableOpacity style={styles.optionBtn}>
-          <Ionicons name="settings-outline" size={20} color="#000" />
-          <Text style={styles.optionText}>Settings</Text>
-          <Ionicons name="chevron-forward-outline" size={18} color="#999" />
+        {/* BTC BALANCE BOX */}
+        <View style={styles.balanceBox}>
+          <Ionicons name="logo-bitcoin" size={30} color="#F7931A" />
+          <View style={{ marginLeft: 10 }}>
+            <Text style={styles.balanceLabel}>BTC Rewards</Text>
+            <Text style={styles.balanceValue}>0.00568 BTC</Text>
+          </View>
+        </View>
+
+        <TouchableOpacity style={styles.editBtn}>
+          <Text style={styles.editText}>Edit Profile</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.optionBtn}>
-          <Ionicons name="wallet-outline" size={20} color="#000" />
-          <Text style={styles.optionText}>Wallet & Rewards</Text>
-          <Ionicons name="chevron-forward-outline" size={18} color="#999" />
-        </TouchableOpacity>
+        {/* OPTIONS */}
+        <View style={styles.options}>
+          <TouchableOpacity style={styles.optionBtn}>
+            <Ionicons name="settings-outline" size={20} color="#000" />
+            <Text style={styles.optionText}>Settings</Text>
+            <Ionicons name="chevron-forward-outline" size={18} color="#999" />
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.optionBtn}>
-          <Ionicons name="help-circle-outline" size={20} color="#000" />
-          <Text style={styles.optionText}>Help & Support</Text>
-          <Ionicons name="chevron-forward-outline" size={18} color="#999" />
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.optionBtn}>
+            <Ionicons name="wallet-outline" size={20} color="#000" />
+            <Text style={styles.optionText}>Wallet & Rewards</Text>
+            <Ionicons name="chevron-forward-outline" size={18} color="#999" />
+          </TouchableOpacity>
+ 
+          <TouchableOpacity
+            style={styles.optionBtn}
+            onPress={() => router.push("/doctor-consultation/appointmenthistory")}
+          >
+            <Ionicons name="time-outline" size={20} color="#000" />
+            <Text style={styles.optionText}>Appointment History</Text>
+            <Ionicons name="chevron-forward-outline" size={18} color="#999" />
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.optionBtn}>
-          <Ionicons name="log-out-outline" size={20} color="#E91E63" />
-          <Text style={[styles.optionText, { color: "#E91E63" }]}>Logout</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
-    <BottomNav/>
+          <TouchableOpacity style={styles.optionBtn}>
+            <Ionicons name="help-circle-outline" size={20} color="#000" />
+            <Text style={styles.optionText}>Help & Support</Text>
+            <Ionicons name="chevron-forward-outline" size={18} color="#999" />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.optionBtn}>
+            <Ionicons name="log-out-outline" size={20} color="#E91E63" />
+            <Text style={[styles.optionText, { color: "#E91E63" }]}>
+              Logout
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+
+      <BottomNav />
     </>
   );
 }
+
 
 const styles = StyleSheet.create({
   safe: {

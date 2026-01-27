@@ -6,9 +6,6 @@ import {
   StyleSheet,
   FlatList,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-
-/* ================= DATA ================= */
 
 const history = [
   {
@@ -37,25 +34,22 @@ const history = [
   },
 ];
 
-/* ================= COMPONENT ================= */
-
 export default function BitcoinHistoryScreen() {
   return (
-    <SafeAreaView style={styles.safe}>
+    <View style={styles.container}>
       {/* HEADER */}
       <View style={styles.header}>
         <Ionicons name="time-outline" size={22} color="#000" />
         <Text style={styles.headerTitle}>Bitcoin History</Text>
       </View>
 
-      {/* HISTORY LIST */}
+      {/* LIST (NO flex:1, NO SafeAreaView) */}
       <FlatList
         data={history}
         keyExtractor={(item) => item.id}
-        showsVerticalScrollIndicator={false}
+        scrollEnabled={false}   // 🔥 IMPORTANT
         renderItem={({ item }) => (
           <View style={styles.historyItem}>
-            {/* LEFT ICON */}
             <View
               style={[
                 styles.iconCircle,
@@ -76,14 +70,12 @@ export default function BitcoinHistoryScreen() {
               />
             </View>
 
-            {/* TEXT */}
             <View style={{ flex: 1 }}>
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.subTitle}>{item.type}</Text>
               <Text style={styles.date}>{item.date}</Text>
             </View>
 
-            {/* AMOUNT */}
             <Text
               style={[
                 styles.btc,
@@ -95,17 +87,14 @@ export default function BitcoinHistoryScreen() {
           </View>
         )}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
-/* ================= STYLES ================= */
-
 const styles = StyleSheet.create({
-  safe: {
-    flex: 1,
+  container: {
     backgroundColor: "#F5F6FA",
-    padding: 16,
+    padding: 10,
   },
 
   header: {

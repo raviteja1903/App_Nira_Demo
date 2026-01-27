@@ -3,12 +3,16 @@ import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function DoctorsConcernsCards() {
-    const router = useRouter();
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Doctor Concerns</Text>
       <View style={styles.row}>
-        <TouchableOpacity activeOpacity={0.85} style={styles.card}onPress={() => router.push("/doctor-consultation/consultation")}>
+        <TouchableOpacity
+          activeOpacity={0.85}
+          style={styles.card}
+          onPress={() => router.push("/doctor-consultation/consultation")}
+        >
           <Image
             source={{
               uri: "https://www.shutterstock.com/image-photo/telemedicine-video-call-doctor-on-260nw-1813787252.jpg",
@@ -21,8 +25,7 @@ export default function DoctorsConcernsCards() {
           </View>
         </TouchableOpacity>
 
-        {/* CARD 2 */}
-        <TouchableOpacity activeOpacity={0.85} style={styles.card}>
+        <TouchableOpacity activeOpacity={0.85} style={styles.card} onPress={() => router.push("/doctor-consultation/FindDoctorsMapScreen")}>
           <Image
             source={{
               uri: "https://thumbs.dreamstime.com/b/youre-going-to-be-just-fine-mature-doctor-sitting-his-patient-holding-her-hand-consultation-clinic-266559851.jpg",
@@ -31,7 +34,7 @@ export default function DoctorsConcernsCards() {
           />
           <View style={styles.cardContent}>
             <Text style={styles.title}>Find Doctors Near You</Text>
-            <Text style={styles.subtitle}>confirmed appointments</Text>
+            <Text style={styles.subtitle}>confirmed appointment</Text>
           </View>
         </TouchableOpacity>
       </View>

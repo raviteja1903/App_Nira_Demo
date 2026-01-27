@@ -136,7 +136,7 @@ export default function ChatScreen() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         keyboardVerticalOffset={Platform.OS === "ios" ? 70 : 0}
       >
-        {/* CHAT LIST */}
+      
         <FlatList
           ref={flatListRef}
           data={messages}
